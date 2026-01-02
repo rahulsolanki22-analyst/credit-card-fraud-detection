@@ -50,23 +50,22 @@ Project Structure
 
 fraud_detection/
 │
-├── app/                 # Streamlit app
-│   └── app.py
+├── app/ # Streamlit app
+│ └── app.py
 │
 ├── data/
-│   ├── raw/             # Original dataset
-│   └── processed/       # Cleaned data
+│ ├── raw/ # Original dataset (not uploaded)
+│ └── processed/ # Cleaned data (not uploaded)
 │
-├── notebooks/           # Step-by-step notebooks
-│   ├── 01_eda.ipynb
-│   ├── 02_preprocessing.ipynb
-│   ├── 03_model_training.ipynb
-│   └── 04_evaluation.ipynb
+├── notebooks/ # Step-by-step notebooks
+│ ├── 01_eda.ipynb
+│ ├── 02_preprocessing.ipynb
+│ ├── 03_model_training.ipynb
+│ └── 04_evaluation.ipynb
 │
-├── src/                 # Reusable ML code
+├── src/ # Reusable ML code
 │
-├── models/
-│   └── fraud_model.pkl  # Final trained model
+├── models/ # Trained models (not uploaded)
 │
 ├── requirements.txt
 └── README.md
