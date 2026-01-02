@@ -47,6 +47,7 @@ Amount: Transaction amount
 Because features are anonymized using PCA, they are not directly interpretable.
 
 Project Structure
+
 fraud_detection/
 │
 ├── app/                 # Streamlit app
