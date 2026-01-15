@@ -50,25 +50,25 @@ Project Structure
 
 fraud_detection/
 │
-├── app/ # Streamlit app
-│ └── app.py
+├── app/                      # Streamlit web app
+│   └── app.py
 │
 ├── data/
-│ ├── raw/ # Original dataset (not uploaded)
-│ └── processed/ # Cleaned data (not uploaded)
+│   ├── raw/                  # Original dataset (not uploaded)
+│   └── processed/            # Cleaned and preprocessed data (not uploaded)
 │
-├── notebooks/ # Step-by-step notebooks
-│ ├── 01_eda.ipynb
-│ ├── 02_preprocessing.ipynb
-│ ├── 03_model_training.ipynb
-│ └── 04_evaluation.ipynb
+├── notebooks/                # Step-by-step ML notebooks
+│   ├── 01_eda.ipynb           # Exploratory Data Analysis
+│   ├── 02_preprocessing.ipynb # Data cleaning and feature engineering
+│   ├── 03_model_training.ipynb# Model training
+│   └── 04_evaluation.ipynb    # Model evaluation and metrics
 │
-├── src/ # Reusable ML code
+├── src/                      # Reusable ML pipeline code
 │
-├── models/ # Trained models (not uploaded)
+├── models/                   # Trained ML models (not uploaded)
 │
-├── requirements.txt
-└── README.md
+├── requirements.txt          # Python dependencies
+└── README.md                 # Project documentation
 
 Approach
 1. Exploratory Data Analysis (EDA)
