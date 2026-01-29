@@ -1,176 +1,140 @@
-**Credit Card Fraud Detection using Machine Learning**
+# Credit Card Fraud Detection using Machine Learning
 
+## Overview
+This project is an end-to-end machine learning system for detecting fraudulent credit card transactions from highly imbalanced data.  
+The focus is on using correct evaluation metrics, handling class imbalance properly, and building a realistic ML workflow with deployment.
 
-Overview
+---
 
-This project is an end-to-end Credit Card Fraud Detection system built using machine learning.
-The goal is to identify whether a transaction is fraudulent or normal using historical transaction data.
+## Problem Statement
+Credit card fraud detection is a highly imbalanced classification problem where fraudulent transactions account for less than 0.2% of the data.
 
-Fraud detection is a challenging problem because fraud cases are extremely rare, so accuracy alone is not reliable. This project focuses on the right evaluation metrics and a realistic ML workflow.
+Goals:
+- Detect fraudulent transactions
+- Catch as many frauds as possible
+- Reduce false alarms
+- Build a model suitable for real-world conditions
 
-Problem Statement
+---
 
-Credit card fraud detection is a highly imbalanced classification problem, where fraudulent transactions make up less than 0.2% of the data.
-
-The objective is to:
-
-Detect fraudulent transactions
-
-Catch as many frauds as possible
-
-Reduce false alarms
-
-Build a model that works well in real-world conditions
-
-Dataset
-
-Dataset: European Credit Card Transactions
-
-Total transactions: 284,807
-
-Fraud cases: 492
-
-Target column: Class
-
-0 → Normal transaction
-
-1 → Fraudulent transaction
+## Dataset
+- Dataset: European Credit Card Transactions
+- Total transactions: 284,807
+- Fraud cases: 492
+- Target column: Class
+  - 0 = Normal transaction
+  - 1 = Fraudulent transaction
 
 Features:
+- V1 to V28: PCA-transformed and anonymized features
+- Time: Time since first transaction
+- Amount: Transaction amount
 
-V1 to V28: PCA-transformed features (anonymized)
+Note: Due to PCA anonymization, individual features are not directly interpretable.
 
-Time: Time since first transaction
+---
 
-Amount: Transaction amount
+## Project Structure
+credit-card-fraud-detection/
+- app/
+  - app.py (Streamlit web application)
+- data/
+  - raw/ (dataset not uploaded)
+  - processed/ (cleaned data not uploaded)
+- notebooks/
+  - 01_eda.ipynb
+  - 02_preprocessing.ipynb
+  - 03_model_training.ipynb
+  - 04_evaluation.ipynb
+- src/
+- models/ (saved models not uploaded)
+- requirements.txt
+- README.md
 
-Because features are anonymized using PCA, they are not directly interpretable.
+---
 
-Project Structure
+## Approach
 
-fraud_detection/
-│
-├── app/                      # Streamlit web app
-│   └── app.py
-│
-├── data/
-│   ├── raw/                  # Original dataset (not uploaded)
-│   └── processed/            # Cleaned and preprocessed data (not uploaded)
-│
-├── notebooks/                # Step-by-step ML notebooks
-│   ├── 01_eda.ipynb           # Exploratory Data Analysis
-│   ├── 02_preprocessing.ipynb # Data cleaning and feature engineering
-│   ├── 03_model_training.ipynb# Model training
-│   └── 04_evaluation.ipynb    # Model evaluation and metrics
-│
-├── src/                      # Reusable ML pipeline code
-│
-├── models/                   # Trained ML models (not uploaded)
-│
-├── requirements.txt          # Python dependencies
-└── README.md                 # Project documentation
+### Exploratory Data Analysis
+- Checked dataset shape and columns
+- Verified there are no missing values
+- Analyzed severe class imbalance
+- Studied transaction amount distribution
 
-Approach
-1. Exploratory Data Analysis (EDA)
+Key insight:
+- Accuracy is misleading due to extreme class imbalance
 
-Checked data shape and columns
+---
 
-Verified there are no missing values
+### Data Preprocessing
+- Scaled Time and Amount using StandardScaler
+- Split data into training and test sets
+- Applied SMOTE only on training data to avoid data leakage
 
-Analyzed class imbalance
+---
 
-Studied transaction amount distribution
+### Model Training
+Trained and compared the following models:
+- Logistic Regression (baseline)
+- Random Forest
+- XGBoost
 
-Key finding:
+Evaluation metrics used:
+- Precision
+- Recall
+- F1-score
+- ROC-AUC
 
-Dataset is extremely imbalanced, so accuracy is misleading.
+---
 
-2. Data Preprocessing
+### Model Evaluation and Selection
+- Logistic Regression showed high recall but many false positives
+- XGBoost achieved strong recall and ROC-AUC but was aggressive
+- Random Forest provided the best balance between fraud detection and false alarms
 
-Scaled Time and Amount using StandardScaler
+Final selected model:
+- Random Forest
 
-Split data into train and test sets
+---
 
-Applied SMOTE only on training data to handle imbalance
+## Streamlit Web Application
+A Streamlit web app was built to demonstrate real-time fraud detection.
 
-Saved cleaned training data
+App features:
+- Transaction input interface
+- Prediction output with probability
+- Demo Mode for presentation-friendly fraud detection
 
-3. Model Training
+Demo Mode explanation:
+Since the dataset uses PCA-transformed features, realistic manual inputs are not intuitive.  
+Demo Mode allows consistent demonstration of fraud detection behavior during presentations.
 
-Trained and compared multiple models:
+---
 
-Logistic Regression (baseline)
+## Technologies Used
+- Python
+- Pandas
+- NumPy
+- scikit-learn
+- Imbalanced-learn (SMOTE)
+- XGBoost
+- Streamlit
+- Matplotlib
+- Seaborn
 
-Random Forest (final selected model)
+---
 
-XGBoost (advanced model)
-
-Models were compared using:
-
-Precision
-
-Recall
-
-F1-score
-
-ROC-AUC
-
-4. Model Evaluation
-
-Accuracy was not used for model selection.
-
-Key observations:
-
-Logistic Regression had high recall but too many false positives
-
-XGBoost had strong recall and ROC-AUC but was aggressive
-
-Random Forest provided the best balance between fraud detection and false alarms
-
-Final model selected: Random Forest
-
-Streamlit Web App
-
-A Streamlit application was built to demonstrate the model.
-
-App Features
-
-Input transaction details
-
-Demo Mode (to showcase fraud detection clearly)
-
-Load Sample Fraud Transaction button
-
-Clear prediction output with confidence/probability
-
-Demo Mode Explanation
-
-Because the dataset uses PCA-transformed features, real-world inputs are not intuitive.
-To solve this, the app includes a Demo Mode that consistently shows fraud detection behavior for presentation purposes.
-
-When Demo Mode is OFF, the app uses real model predictions.
-
-Technologies Used
-
-Python
-Pandas, NumPy
-Scikit-learn
-Imbalanced-learn (SMOTE)
-XGBoost
-Joblib
-Streamlit
-Matplotlib, Seaborn
-
-How to Run the Project
+## How to Run the Project
 1. Install dependencies
-pip install -r requirements.txt
+   pip install -r requirements.txt
 
-2. Run the Streamlit app
-streamlit run app/app.py
+2. Run the Streamlit application
+   streamlit run app/app.py
 
-Final Conclusion
+---
 
-This project demonstrates a complete machine learning workflow for fraud detection on imbalanced data.
+## Conclusion
+This project demonstrates a complete machine learning workflow for fraud detection on highly imbalanced data.  
 It highlights the importance of proper preprocessing, correct evaluation metrics, and practical deployment considerations.
 
-The final Random Forest model provides a strong balance between detecting fraud and minimizing false alerts, making it suitable for real-world use cases.
+The final Random Forest model provides a strong balance between detecting fraud and minimizing false alerts, making it suitable for real-world applications.
