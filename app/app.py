@@ -2,6 +2,12 @@ import streamlit as st
 import joblib
 import numpy as np
 import os
+# ---------------- Page config ----------------
+st.set_page_config(
+    page_title="Credit Card Fraud Detection",
+    layout="centered"
+)
+
 
 # ---------------- Load model ----------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -77,11 +83,6 @@ def load_real_fraud():
     for i in range(28):
         st.session_state[f"v_{i}"] = real_vals[i]
 
-# ---------------- Page config ----------------
-st.set_page_config(
-    page_title="Credit Card Fraud Detection",
-    layout="centered"
-)
 
 # ---------------- UI ----------------
 st.markdown(
