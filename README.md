@@ -101,9 +101,12 @@ Final selected model:
 A Streamlit web app was built to demonstrate real-time fraud detection.
 
 App features:
-- Transaction input interface
-- Prediction output with probability
-- Demo Mode for presentation-friendly fraud detection
+- Modern UI with sidebar navigation (single prediction / batch scoring / about)
+- Model selection (Random Forest / Logistic Regression / XGBoost)
+- Adjustable decision threshold to demonstrate precision/recall trade-offs
+- Single-transaction scoring with probability + risk tier
+- Batch scoring via CSV upload + downloadable results
+- Quick-fill demo/sample transactions for presentation-friendly walkthroughs
 
 Demo Mode explanation:
 Since the dataset uses PCA-transformed features, realistic manual inputs are not intuitive.  

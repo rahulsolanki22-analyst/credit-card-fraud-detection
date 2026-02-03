@@ -13,3 +13,7 @@ venv/
 
 # Streamlit
 .streamlit/
+
+testing data/
+data/
+*.csv
