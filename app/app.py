@@ -1,26 +1,15 @@
 import os
-# ---------------- Page config ----------------
-st.set_page_config(
-    page_title="Credit Card Fraud Detection",
-    layout="centered"
-)
-
-
 import joblib
 import numpy as np
 import pandas as pd
 import streamlit as st
 
 
-<<<<<<< HEAD
-=======
-# ---------------- Page config ----------------
+
 st.set_page_config(
-    page_title="Fraud Detection • ML Demo",
-    page_icon="🧠",
-    layout="wide",
+    page_title="Credit Card Fraud Detection",
+    layout="centered"
 )
->>>>>>> 7b0afe3 (Editing readme.md ,app.py and adding testing dataset)
 
 
 # ---------------- Paths ----------------
