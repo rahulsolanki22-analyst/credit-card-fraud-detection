@@ -1,16 +1,12 @@
 import os
 # ---------------- Page config ----------------
-st.set_page_config(
-    page_title="Credit Card Fraud Detection",
-    layout="centered"
-)
+
 
 
 import joblib
 import numpy as np
 import pandas as pd
 import streamlit as st
-
 
 
 # ---------------- Page config ----------------
@@ -34,7 +30,8 @@ FEATURE_COLUMNS = ["Time"] + [f"V{i}" for i in range(1, 29)] + ["Amount"]
 st.markdown(
     """
     <style>
-      .block-container { padding-top: 1.25rem; padding-bottom: 2rem; }
+      /* Increase top padding so the main heading is never clipped */
+      .block-container { padding-top: 3.5rem; padding-bottom: 2rem; }
       .app-card {
         border: 1px solid rgba(255,255,255,0.10);
         border-radius: 14px;
@@ -183,7 +180,7 @@ if "sample_msg" not in st.session_state:
 # ---------------- Sidebar ----------------
 with st.sidebar:
     st.markdown("### Fraud Detection")
-    st.caption("Interview-ready Streamlit UI for your ML models.")
+    st.caption("Streamlit UI for your ML models.")
 
     models = available_models()
     if not models:
